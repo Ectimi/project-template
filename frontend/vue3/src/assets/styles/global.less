@@ -1,0 +1,196 @@
+html,
+body,
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #04102b;
+}
+
+//修改element-plus样式
+:root {
+  .el-input {
+    --el-input-text-color: #7d8da3;
+    --el-input-bg-color: #213159;
+    --el-input-border-radius: 2px;
+    --el-border-color: transparent;
+  }
+
+  .el-button {
+    --el-button-bg-color: #213159;
+    --el-button-hover-bg-color: #213159;
+    --el-button-text-color: #e2f7ff;
+    --el-button-hover-text-color: #e2f7ff;
+    --el-border-color: transparent;
+  }
+
+  .el-collapse-item__header {
+    --el-collapse-header-height: 30px;
+    --el-collapse-header-bg-color: rgba(33, 49, 89, 0.27);
+    --el-collapse-header-text-color: #d8d8d8;
+  }
+
+  .el-collapse-item__content {
+    --el-collapse-content-text-color: #7d8da3;
+  }
+
+  //select样式
+  .el-select__popper.el-popper {
+    border: none;
+    --el-bg-color-overlay: #13162c;
+    .el-scrollbar,
+    .el-select-dropdown__empty {
+      color: #b8d5f2;
+      background-color: #13162c;
+    }
+    .el-select-dropdown__item {
+      --el-text-color-regular: #b8d5f2;
+    }
+    .el-select-dropdown__item.hover,
+    .el-select-dropdown__item:hover {
+      background-color: transparent;
+      --el-text-color-regular: #0dc6a1;
+    }
+
+    .el-popper__arrow::before {
+      display: none;
+      // border-color: #13162c;
+      // background-color: #13162c;
+    }
+  }
+
+  //dropdown样式
+  .el-popper.el-dropdown__popper {
+    border: none !important;
+    background-color: #13162c;
+
+    .el-scrollbar {
+      background-color: #13162c;
+    }
+
+    .el-dropdown-menu__item:hover {
+      background-color: #13162c;
+      color: #0dc6a1;
+    }
+
+    .el-dropdown-menu {
+      background-color: #13162c;
+
+      li {
+        color: #b8d5f2;
+      }
+    }
+  }
+
+  .el-dropdown__popper.el-popper[data-popper-placement^='bottom']
+    .el-popper__arrow::before {
+    display: none;
+  }
+
+  //message
+  .el-message--info {
+    --el-message-bg-color: #13162c;
+    --el-message-border-color: #13162c;
+    --el-message-text-color: #b8d5f2;
+  }
+
+  //tree
+  .el-tree {
+    --el-fill-color-blank: #13162c;
+    --el-tree-node-hover-bg-color: #213159;
+    --el-tree-text-color: #d8d8d8;
+
+    .el-tree-node {
+      .el-tree-node__children {
+        .el-tree-node__label {
+          color: #7d8da3;
+        }
+      }
+    }
+
+    > .el-tree-node:nth-of-type(1) {
+      > .el-tree-node__content .el-tree-node__label {
+        color: #d8d8d8;
+      }
+
+      > .el-tree-node__children {
+        > .el-tree-node {
+          > .el-tree-node__content {
+            .el-tree-node__label {
+              color: #d8d8d8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 修改滚动条样式
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 0px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: none;
+  background: transparent;
+  border-radius: 10px;
+}
+
+//图表tooltip
+.chartTooltip {
+  position: relative;
+  padding: 10px;
+  font-family: AlibabaPuHuiTi_2_55_Regular;
+  font-size: 14px;
+  color: #b8d5f2;
+  letter-spacing: 0;
+  font-weight: 400;
+  background-image: linear-gradient(
+    180deg,
+    #13162c 0%,
+    rgba(18, 22, 44, 0.8) 100%
+  );
+  border-radius: 4px;
+
+  &.mapTooltip {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0px;
+      height: 0px;
+      border: 10px solid rgba(18, 22, 44, 0.8);
+      border-top-color: rgba(18, 22, 44, 0.8);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+
+  > div {
+    margin-top: 8px;
+  }
+
+  .value {
+    font-family: D-DIN-Bold;
+    font-size: 14px;
+    color: #00ffc7;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+}

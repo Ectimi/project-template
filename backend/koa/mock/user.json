@@ -1,0 +1,12 @@
+{
+    "name":"user",
+    "data":[
+        {
+            "id":0,
+            "username":"123",
+            "password":"123456",
+            "gender":"female",
+            "age":20
+        }
+    ]
+}
