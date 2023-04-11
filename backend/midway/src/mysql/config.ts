@@ -1,7 +1,7 @@
 const mysqlConfig = {
-  host: '124.223.24.47',
+  host: '',
   user: 'root',
-  password: '123456',
+  password: '',
   database: 'p1',
 };
 

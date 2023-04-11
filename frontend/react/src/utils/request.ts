@@ -13,8 +13,8 @@ signal.addEventListener('abort', () => {
 Request.extendOptions({
   prefix:
     process.env.NODE_ENV === 'development'
-      ? 'http://127.0.0.1:7001/bookmark'
-      : 'http://124.223.24.47:7001/bookmark',
+      ? 'http://127.0.0.1:7001'
+      : 'http://127.0.0.1:7001',
   signal,
 });
 
@@ -32,10 +32,6 @@ Request.use(async (ctx, next) => {
   const { res } = ctx;
   const { success, message: msg } = res;
   if (!success) {
-    // if(msg === "token已过期，请重新登录"){
-    //   removeStorage('access_token')
-    //   removeStorage("user")
-    // }
     message.error(msg);
   }
 });
