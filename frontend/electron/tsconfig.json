@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -15,7 +16,11 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "main/*": ["src/main/*"],
+      "@/*": ["src/renderer/src/*"]
+    }
   },
 
   "include": ["vite.config.ts", "typings.d.ts", "src"]

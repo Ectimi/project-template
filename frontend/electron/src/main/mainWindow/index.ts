@@ -1,5 +1,5 @@
 import path from 'path';
-import { getMainPath } from '../utils';
+import { getDistPath } from '../utils';
 import { BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 
 let mainWindow: BrowserWindow | null = null;
@@ -12,8 +12,8 @@ export function createMainWindow(
   }
   const defaultOptions: BrowserWindowConstructorOptions = {
     title: 'main',
-    width: 800,
-    height: 800,
+    minHeight: 800,
+    minWidth: 800,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -23,7 +23,7 @@ export function createMainWindow(
       webviewTag: true,
       spellcheck: false,
       disableHtmlFullscreenWindowResize: true,
-      preload: path.resolve(getMainPath(), 'preload/index.js'),
+      preload: path.resolve(getDistPath(), 'preload/index.js'),
     },
   };
 

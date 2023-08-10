@@ -1,14 +1,29 @@
-const { contextBridge } = require('electron');
+import {
+  ipcRenderer,
+  IpcRenderer,
+  contextBridge,
+  IpcRendererEvent,
+} from 'electron';
 
-type getVersion = () => string;
-export interface IVersions {
-  node: getVersion;
-  chrome: getVersion;
-  electron: getVersion;
+type listener = (event: IpcRendererEvent, ...args: any[]) => void;
+
+export interface IElectronApi {
+  ipcRenderer: IpcRenderer;
 }
 
-contextBridge.exposeInMainWorld('versions', {
-  node: () => process.versions.node,
-  chrome: () => process.versions.chrome,
-  electron: () => process.versions.electron,
-});
+contextBridge.exposeInMainWorld('electronApi', {
+  ipcRenderer: {
+    once(channel: string, handle: listener) {
+      ipcRenderer.once(channel, handle);
+    },
+    on(channel: string, handle: listener) {
+      ipcRenderer.on(channel, handle);
+    },
+    send(channel: string, handle: listener) {
+      ipcRenderer.send(channel, handle);
+    },
+    sendSync(channel: string, handle: listener) {
+      ipcRenderer.sendSync(channel, handle);
+    },
+  },
+} as IElectronApi);

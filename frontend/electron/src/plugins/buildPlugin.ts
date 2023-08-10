@@ -14,7 +14,6 @@ class BuildObj {
   }
   preparePackageJson() {
     const pkgJsonPath = path.join(process.cwd(), 'package.json');
-    console.log('pkg json', pkgJsonPath);
     const localPkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf-8'));
     //https://github.com/electron-userland/electron-builder/issues/4157#issuecomment-596419610
     const electronConfig = localPkgJson.devDependencies.electron.replace(
@@ -31,7 +30,7 @@ class BuildObj {
     fs.ensureDirSync(path.join(process.cwd(), 'dist/node_modules'));
   }
   buildInstaller() {
-    let options = {
+    const options = {
       config: {
         directories: {
           output: path.join(process.cwd(), 'release'),
@@ -39,8 +38,8 @@ class BuildObj {
         },
         files: ['**'],
         extends: null,
-        productName: 'CodeSnippets',
-        appId: 'com.code-snippets.desktop',
+        productName: 'LowCode',
+        appId: 'com.low-code.desktop',
         asar: true,
         nsis: {
           oneClick: true,
@@ -48,7 +47,7 @@ class BuildObj {
           allowToChangeInstallationDirectory: false,
           createDesktopShortcut: true,
           createStartMenuShortcut: true,
-          shortcutName: 'CodeSnippets',
+          shortcutName: 'LowCode',
         },
         publish: [{ provider: 'generic', url: 'http://localhost:5500/' }],
       },
@@ -62,7 +61,7 @@ export const buildPlugin = () => {
   return {
     name: 'build-plugin',
     closeBundle: () => {
-      let buildObj = new BuildObj();
+      const buildObj = new BuildObj();
       buildObj.buildMain();
       buildObj.preparePackageJson();
       buildObj.buildInstaller();
